@@ -1,36 +1,36 @@
-import type { Config } from 'tailwindcss'
-import animationPlugin from 'tailwindcss-animate'
+import type { Config } from "tailwindcss";
+//import animationPlugin from "tw-animate-css";
 
 export const config: Config = {
-  darkMode: 'class',
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  darkMode: "class",
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '960px',
-      xl: '1200px',
+      sm: "640px",
+      md: "768px",
+      lg: "960px",
+      xl: "1200px",
     },
     extend: {
       keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
+        "accordion-down": {
+          from: { height: "0" },
           to: {
-            height: 'var(--radix-accordion-content-height)',
+            height: "var(--radix-accordion-content-height)",
           },
         },
-        'accordion-up': {
+        "accordion-up": {
           from: {
-            height: 'var(--radix-accordion-content-height)',
+            height: "var(--radix-accordion-content-height)",
           },
-          to: { height: '0' },
+          to: { height: "0" },
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [animationPlugin],
-}
+  plugins: [require("tw-animate-css")],
+};
