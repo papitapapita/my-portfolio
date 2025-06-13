@@ -1,8 +1,15 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
+//import animationPlugin from "tw-animate-css";
 
 export const config: Config = {
-    content: [
-        "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    ],
-    plugins: []
-}
+  darkMode: "class",
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "960px",
+      xl: "1200px",
+    },
+  },
+};
