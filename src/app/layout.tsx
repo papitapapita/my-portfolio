@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={jetBrainsMono.className}>
+    <html lang="en" className={`${jetBrainsMono.className} dark`}>
       <body className="antialiased">{children}</body>
     </html>
   );
