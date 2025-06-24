@@ -1,3 +1,4 @@
+import { MobileNav } from "./MobileNav";
 import { Nav } from "./Nav";
 import Link from "next/link";
 
@@ -15,7 +16,9 @@ export function Header() {
           <Nav />
         </div>
 
-        <div className="xl:hidden flex">mobile navbar</div>
+        <div className="xl:hidden flex">
+          <MobileNav />
+        </div>
       </div>
     </header>
   );

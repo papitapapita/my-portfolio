@@ -3,37 +3,13 @@
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-interface LinkButton {
-  name: string;
-  path: string;
-}
-
-const linkButtons: LinkButton[] = [
-  { name: "Home", path: "/" },
-  {
-    name: "services",
-    path: "/services",
-  },
-  {
-    name: "resume",
-    path: "/resume",
-  },
-  {
-    name: "work",
-    path: "/work",
-  },
-  {
-    name: "contact",
-    path: "/contact",
-  },
-];
+import { linkButtons } from "@/lib/nav-links";
 
 export function Nav() {
   const pathname = usePathname();
   console.log(pathname);
   return (
-    <nav className="flex place-items-center gap-4 hover">
+    <nav className="flex place-items-center gap-8 hover">
       {linkButtons.map((link, index) => (
         <Link
           href={link.path}

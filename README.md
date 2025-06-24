@@ -40,6 +40,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 In this project I learned to use Shadcn and Next.js
 
 ## To-Do
-
-1. Add a link to the logo
-2. Add responsiveness to the navbar

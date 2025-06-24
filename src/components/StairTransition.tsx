@@ -19,7 +19,7 @@ export function StairTransition() {
           animate={{
             opacity: 0,
             transition: {
-              delay: 1,
+              delay: 0.5,
               duration: 0.4,
               ease: "easeInOut",
             },
