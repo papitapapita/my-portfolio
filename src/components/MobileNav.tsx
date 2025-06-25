@@ -14,17 +14,17 @@ export function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger>
-        <CiMenuFries className="text-[32px] text-accent" />
+        <CiMenuFries className="text-[32px] text-accent cursor-pointer" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
-        <Link href="/" onClick={() => setOpen(false)}>
-          <div className="mt-30 text-center">
+        <div className="mt-32 text-center">
+          <Link href="/" onClick={() => setOpen(false)}>
             <h1 className="text-4xl font-semibold">
               Jonathan<span className="text-accent">.</span>
             </h1>
-          </div>
-        </Link>
-        <nav className="mt-20 flex flex-col place-items-center gap-4 hover">
+          </Link>
+        </div>
+        <nav className="mt-32 flex flex-col place-items-center gap-8 hover">
           {linkButtons.map((link, index) => (
             <Link
               href={link.path}
@@ -32,7 +32,7 @@ export function MobileNav() {
               onClick={() => setOpen(false)}
               className={`${
                 link.path === pathname &&
-                "border-b-2 border-accent text-accent}"
+                "border-b-2 border-accent text-accent"
               } capitalize font-medium hover:text-accent transition-all`}
             >
               {link.name}
