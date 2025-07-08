@@ -22,7 +22,7 @@ export function Nav() {
           {link.name}
         </Link>
       ))}
-      <Button className="bg-accent ">Hire me</Button>
+      <Button>Hire me</Button>
     </nav>
   );
 }
