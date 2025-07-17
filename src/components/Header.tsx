@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Header() {
   return (
     <header>
-      <div className="container flex justify-around mx-auto p-8">
+      <div className="container flex justify-between mx-auto py-8">
         <Link href="/">
           <h1 className="text-4xl font-semibold">
             Jonathan<span className="text-accent">.</span>
