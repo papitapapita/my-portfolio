@@ -22,7 +22,15 @@ export function Nav() {
           {link.name}
         </Link>
       ))}
-      <Button>Hire me</Button>
+      <Button asChild>
+        <a
+          href="https://www.linkedin.com/in/jonathan-olivos/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Hire me
+        </a>
+      </Button>
     </nav>
   );
 }
