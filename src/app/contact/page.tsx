@@ -17,7 +17,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { MotionPageContainer } from "@/components/MotionPageContainer";
 
 const info = [
   {
@@ -39,14 +39,7 @@ const info = [
 
 export default function Contact() {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 1.2, duration: 0.4, ease: "easeIn" },
-      }}
-      className="py-6"
-    >
+    <MotionPageContainer className="py-6">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:h-[54%] order-2 xl:order-none">
@@ -108,6 +101,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </MotionPageContainer>
   );
 }

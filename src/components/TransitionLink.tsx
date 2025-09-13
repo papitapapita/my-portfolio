@@ -11,18 +11,23 @@ export function TransitionLink({
   className,
   onClick,
 }: TransitionLinkProps) {
-  const { startNavigation } = useNavigation();
+  const { startNavigation, animationPhase } = useNavigation();
   const router = useRouter();
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     onClick?.();
+
+    if (animationPhase !== "idle") {
+      return;
+    }
+
     startNavigation();
 
     // Small delay to ensure transition starts before navigation
     setTimeout(() => {
       router.push(href);
-    }, 50);
+    }, 600);
   };
 
   return (

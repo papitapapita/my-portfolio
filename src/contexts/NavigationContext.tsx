@@ -18,13 +18,28 @@ export function NavigationProvider({
   children: ReactNode;
 }) {
   const [isNavigating, setIsNavigating] = useState(false);
+  const [animationPhase, setAnimationPhase] =
+    useState<NavigationContextType["animationPhase"]>("idle");
 
-  const startNavigation = () => setIsNavigating(true);
-  const endNavigation = () => setIsNavigating(false);
+  const startNavigation = () => {
+    setIsNavigating(true);
+    setAnimationPhase("stairs-up");
+  };
+
+  const endNavigation = () => {
+    setIsNavigating(false);
+    setAnimationPhase("idle");
+  };
 
   return (
     <NavigationContext.Provider
-      value={{ isNavigating, startNavigation, endNavigation }}
+      value={{
+        isNavigating,
+        animationPhase,
+        startNavigation,
+        endNavigation,
+        setAnimationPhase,
+      }}
     >
       {children}
     </NavigationContext.Provider>

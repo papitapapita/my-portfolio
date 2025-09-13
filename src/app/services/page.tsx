@@ -2,7 +2,7 @@
 
 import { BsArrowDownRight } from "react-icons/bs";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { MotionPageContainer } from "@/components/MotionPageContainer";
 
 const services = [
   {
@@ -46,14 +46,7 @@ export default function Services() {
   return (
     <section className="flex flex-col justify-center py-12 min-h-[80vh]">
       <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { delay: 1.2, duration: 0.4, ease: "easeIn" },
-          }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
-        >
+        <MotionPageContainer className="grid grid-cols-1 md:grid-cols-2 gap-[60px]">
           {services.map((service, index) => {
             return (
               <div
@@ -79,7 +72,7 @@ export default function Services() {
               </div>
             );
           })}
-        </motion.div>
+        </MotionPageContainer>
       </div>
     </section>
   );

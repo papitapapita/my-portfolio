@@ -19,7 +19,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion } from "framer-motion";
+import { MotionPageContainer } from "@/components/MotionPageContainer";
 
 const about = {
   title: "About me",
@@ -150,14 +150,7 @@ const skills = {
 
 export default function Resume() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 1.2, duration: 0.4, ease: "easeIn" },
-      }}
-      className="flex items-center justify-center py-12 xl:py-0 min-h-[80vh]"
-    >
+    <MotionPageContainer className="flex items-center justify-center py-12 xl:py-0 min-h-[80vh]">
       <div className="container mx-auto">
         <Tabs
           defaultValue="experience"
@@ -291,6 +284,6 @@ export default function Resume() {
           </div>
         </Tabs>
       </div>
-    </motion.div>
+    </MotionPageContainer>
   );
 }

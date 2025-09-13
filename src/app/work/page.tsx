@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -15,6 +14,7 @@ import Link from "next/link";
 import { Swiper as SwiperType } from "swiper/types";
 import Image from "next/image";
 import { WorkSliderBtns } from "@/components/WorkSliderBtns";
+import { MotionPageContainer } from "@/components/MotionPageContainer";
 
 const projects = [
   {
@@ -73,14 +73,7 @@ export default function Work() {
   };
 
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 1.4, duration: 0.4, ease: "easeIn" },
-      }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
-    >
+    <MotionPageContainer className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0">
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
@@ -159,6 +152,6 @@ export default function Work() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </MotionPageContainer>
   );
 }

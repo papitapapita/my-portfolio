@@ -7,6 +7,7 @@ import { linkButtons } from "@/lib/nav-links";
 
 export function Nav() {
   const pathname = usePathname();
+
   return (
     <nav className="flex place-items-center gap-8 hover">
       {linkButtons.map((link, index) => (
