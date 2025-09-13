@@ -4,4 +4,5 @@ export interface TransitionLinkProps {
   href: string;
   children: ReactNode;
   className?: string;
+  onClick?: () => void;
 }

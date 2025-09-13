@@ -2,7 +2,7 @@
 
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { CiMenuFries } from "react-icons/ci";
-import Link from "next/link";
+import { TransitionLink } from "./TransitionLink";
 import { linkButtons } from "@/lib/nav-links";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -18,15 +18,15 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <div className="mt-32 text-center">
-          <Link href="/" onClick={() => setOpen(false)}>
+          <TransitionLink href="/" onClick={() => setOpen(false)}>
             <h1 className="text-4xl font-semibold">
               Jonathan<span className="text-accent">.</span>
             </h1>
-          </Link>
+          </TransitionLink>
         </div>
         <nav className="mt-32 flex flex-col place-items-center gap-8 hover">
           {linkButtons.map((link, index) => (
-            <Link
+            <TransitionLink
               href={link.path}
               key={index}
               onClick={() => setOpen(false)}
@@ -36,7 +36,7 @@ export function MobileNav() {
               } capitalize font-medium hover:text-accent transition-all`}
             >
               {link.name}
-            </Link>
+            </TransitionLink>
           ))}
         </nav>
       </SheetContent>

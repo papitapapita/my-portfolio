@@ -1,17 +1,16 @@
 "use client";
 
 import { Button } from "./ui/button";
-import Link from "next/link";
+import { TransitionLink } from "./TransitionLink";
 import { usePathname } from "next/navigation";
 import { linkButtons } from "@/lib/nav-links";
 
 export function Nav() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <nav className="flex place-items-center gap-8 hover">
       {linkButtons.map((link, index) => (
-        <Link
+        <TransitionLink
           href={link.path}
           key={index}
           className={`${
@@ -20,7 +19,7 @@ export function Nav() {
           } capitalize font-medium hover:text-accent transition-all`}
         >
           {link.name}
-        </Link>
+        </TransitionLink>
       ))}
       <Button asChild>
         <a

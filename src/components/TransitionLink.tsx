@@ -9,12 +9,14 @@ export function TransitionLink({
   href,
   children,
   className,
+  onClick,
 }: TransitionLinkProps) {
   const { startNavigation } = useNavigation();
   const router = useRouter();
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
+    onClick?.();
     startNavigation();
 
     // Small delay to ensure transition starts before navigation
