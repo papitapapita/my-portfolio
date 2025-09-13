@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { TransitionPage } from "@/components/TransitionPage";
 import { StairTransition } from "@/components/StairTransition";
+import { NavigationProvider } from "@/contexts/NavigationContext";
 
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -24,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jetBrainsMono.className}`}>
       <body className="antialiased">
-        <Header />
-        <StairTransition />
-        <TransitionPage>{children}</TransitionPage>
+        <NavigationProvider>
+          <Header />
+          <StairTransition />
+          <TransitionPage>{children}</TransitionPage>
+        </NavigationProvider>
       </body>
     </html>
   );
