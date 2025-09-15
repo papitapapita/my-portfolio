@@ -18,6 +18,8 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 const info = [
   {
@@ -28,16 +30,49 @@ const info = [
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "ramirezjonathanprom2018@gmail.com",
+    description: "jonathanolivosdev@gmail.com",
   },
   {
     icon: <FaMapMarkerAlt />,
     title: "Address",
-    description: "Villavicencio, Meta, Colombia",
+    description: "Bogotá,  Colombia",
   },
 ];
 
 export default function Contact() {
+  const [selectedService, setSelectedService] = useState("");
+  const [submitStatus, setSubmitStatus] = useState<
+    "success" | "error" | null
+  >(null);
+  const [state, handleSubmit] = useForm("mblaeplr");
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitStatus(null);
+
+    const formData = new FormData(e.currentTarget);
+
+    // Add the selected service to form data
+    if (selectedService) {
+      formData.append("service", selectedService);
+    }
+
+    try {
+      await handleSubmit(e);
+      console.log(state.succeeded);
+      if (state.succeeded) {
+        setSubmitStatus("success");
+        // Reset form
+        (e.target as HTMLFormElement).reset();
+        setSelectedService("");
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    }
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -50,44 +85,132 @@ export default function Contact() {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:h-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#121c4d] rounded">
+            <form
+              onSubmit={onSubmit}
+              className="flex flex-col gap-6 p-10 bg-[#121c4d] rounded"
+            >
               <h3 className="text-4xl text-accent">
                 Let&apos;s work together
               </h3>
               <p className="text-white/60">
-                Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Voluptatem quo soluta eveniet repellat enim
-                repellendus iusto ea minus magni officia fugit id
-                voluptates minima quisquam quia vero, aspernatur esse
-                praesentium!
+                Have a project in mind or looking for a developer to
+                join your team? Let&apos;s build something great
+                together — drop me a message and I&apos;ll get back to
+                you soon.
               </p>
+
+              {submitStatus === "success" && (
+                <div className="p-4 bg-green-600/20 border border-green-600 rounded text-green-400">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="p-4 bg-red-600/20 border border-red-600 rounded text-red-400">
+                  Sorry, there was an error sending your message.
+                  Please try again.
+                </div>
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="Firstname" />
-                <Input type="lastname" placeholder="Lastname" />
-                <Input type="email" placeholder="Email address" />
-                <Input type="phone" placeholder="Phone number" />
+                <Input
+                  id="firstname"
+                  name="firstname"
+                  type="text"
+                  placeholder="Firstname"
+                  required
+                />
+                <ValidationError
+                  prefix="Firstname"
+                  field="firstname"
+                  errors={state.errors}
+                />
+                <Input
+                  id="lastname"
+                  name="lastname"
+                  type="text"
+                  placeholder="Lastname"
+                />
+                <ValidationError
+                  prefix="Lastname"
+                  field="lastname"
+                  errors={state.errors}
+                />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Email address"
+                  required
+                />
+                <ValidationError
+                  prefix="Email"
+                  field="email"
+                  errors={state.errors}
+                />
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="Phone number"
+                />
+                <ValidationError
+                  prefix="Phone"
+                  field="phone"
+                  errors={state.errors}
+                />
               </div>
-              <Select>
+
+              <Select
+                value={selectedService}
+                onValueChange={setSelectedService}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">
-                      Web Development
+                    <SelectItem value="webapps">Web Apps</SelectItem>
+                    <SelectItem value="backendapps">
+                      Backend Apps
                     </SelectItem>
-                    <SelectItem value="cst">UI/UX Design</SelectItem>
-                    <SelectItem value="mst">Logo Design</SelectItem>
+                    <SelectItem value="databasedesign">
+                      Database Design
+                    </SelectItem>
+                    <SelectItem value="customsoftwaresolutions">
+                      Custom Software Solutions
+                    </SelectItem>
+                    <SelectItem value="networkmonitoring">
+                      Network Monitoring & IT Support
+                    </SelectItem>
+                    <SelectItem value="technicalconsulting">
+                      Technical Consulting
+                    </SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
+
               <Textarea
+                id="message"
+                name="message"
                 className="h-[200px]"
                 placeholder="Type your message here."
+                required
               />
-              <Button size="md" className="max-w-40">
-                Send message
+              <ValidationError
+                prefix="Message"
+                field="message"
+                errors={state.errors}
+              />
+
+              <Button
+                type="submit"
+                size="md"
+                className="max-w-40"
+                disabled={state.submitting}
+              >
+                {state.submitting ? "Sending..." : "Send message"}
               </Button>
             </form>
           </div>
