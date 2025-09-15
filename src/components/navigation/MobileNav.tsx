@@ -1,9 +1,9 @@
 "use client";
 
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { CiMenuFries } from "react-icons/ci";
 import { TransitionLink } from "./TransitionLink";
-import { linkButtons } from "@/lib/nav-links";
+import { linkButtons } from "@/data/navLinks";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 

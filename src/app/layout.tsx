@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/navigation/Header";
 import { TransitionPage } from "@/components/TransitionPage";
 import { StairTransition } from "@/components/StairTransition";
 import { NavigationProvider } from "@/contexts/NavigationContext";
