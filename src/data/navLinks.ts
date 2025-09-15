@@ -7,11 +7,6 @@ export interface LinkButton {
 export const linkButtons: LinkButton[] = [
   { name: "Home", path: "/", external: false },
   {
-    name: "services",
-    path: "/services",
-    external: false,
-  },
-  {
     name: "resume",
     path: "/resume",
     external: false,
@@ -19,6 +14,11 @@ export const linkButtons: LinkButton[] = [
   {
     name: "work",
     path: "/work",
+    external: false,
+  },
+  {
+    name: "services",
+    path: "/services",
     external: false,
   },
   {
