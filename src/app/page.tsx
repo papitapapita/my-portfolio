@@ -23,9 +23,16 @@ export default function Home() {
               proficient in various software technologies.
             </p>
             <div className="flex gap-10 items-center flex-col xl:flex-row">
-              <Button variant="outline" size="lg">
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
+              <Button asChild variant="outline" size="lg">
+                <a
+                  href="/Jonathan_Olivos_CV.pdf"
+                  download
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span>Download CV</span>
+                  <FiDownload className="text-xl" />
+                </a>
               </Button>
               <Socials
                 containerStyles="flex gap-6"
