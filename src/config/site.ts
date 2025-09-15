@@ -1,4 +1,4 @@
 export const siteConfig = {
-  name: "Jonathan’s Portfolio",
+  name: "Jonathan Olivos Dev",
   description: "Backend & Fullstack Developer",
 };
