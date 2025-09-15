@@ -12,10 +12,16 @@ interface SocialsProps {
 }
 
 const socialMedia = [
-  { path: "", icon: <FaGithub /> },
-  { path: "", icon: <FaLinkedin /> },
-  { path: "", icon: <FaYoutube /> },
-  { path: "", icon: <FaTwitter /> },
+  { path: "https://github.com/papitapapita", icon: <FaGithub /> },
+  {
+    path: "https://www.linkedin.com/in/jonathan-olivos/",
+    icon: <FaLinkedin />,
+  },
+  {
+    path: "https://www.youtube.com/@JonathanDev-j2p",
+    icon: <FaYoutube />,
+  },
+  //{ path: "", icon: <FaTwitter /> },
 ];
 
 export function Socials({
