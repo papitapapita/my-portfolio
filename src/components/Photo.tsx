@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function Photo() {
   return (
-    <div className="relative border">
+    <div className="w-full h-full relative">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
@@ -17,7 +17,6 @@ export function Photo() {
           },
         }}
       >
-        {/* image */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{
@@ -28,16 +27,18 @@ export function Photo() {
               ease: "easeInOut",
             },
           }}
-          className="h-[298px] w-[298px] xl:h-[498px] xl:w-[498px] mix-blend-lighten absolute"
+          className="h-[298px] w-[298px] xl:h-[498px] xl:w-[498px] mix-blend-luminosity absolute"
         >
-          <Image
-            src="file.svg"
-            alt="Profile Photo"
-            quality={100}
-            fill
-            priority
-            className="object-contain"
-          />
+          <div className="absolute left-[15px] xl:left-[30px] h-[298px] w-[298px] xl:h-[498px] xl:w-[498px] ">
+            <Image
+              src="/photo2.png"
+              alt="Profile Photo"
+              quality={100}
+              fill
+              priority
+              className="object-contain"
+            />
+          </div>
         </motion.div>
 
         {/* circle */}
