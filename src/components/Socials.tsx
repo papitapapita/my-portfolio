@@ -3,7 +3,7 @@ import {
   FaGithub,
   FaLinkedin,
   FaYoutube,
-  FaTwitter,
+  //FaTwitter,
 } from "react-icons/fa";
 
 interface SocialsProps {
