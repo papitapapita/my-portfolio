@@ -1,42 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio – Jonathan Olivos
 
-## Getting Started
+A modern portfolio built with cutting-edge web technologies to showcase my work, services, and resume.
 
-First, run the development server:
+## Tech Stack
+
+- **Next.js** – Full-stack React framework
+
+- **React.js** – UI library
+
+- **TypeScript** – Strongly typed JavaScript
+
+- **TailwindCSS** – Utility-first CSS framework
+
+- **shadcn/ui** – Reusable, accessible UI components
+
+- **Framer Motion** – Smooth animations and transitions
+
+## Features & Sections
+
+### General Layout
+
+- The whole layout features framer motion animations. Both for the page itself and a stairs animation every time we change from page.
+- The navbar holds responsiveness for desktop and mobile. In Desktop it is a regular nav and for mobile it is a dropdown menu
+
+### Home
+
+- Introduction with a call-to-action.
+- Downloadable CV with Social media buttons.
+- An animated circle around a picture
+- Counters of years of experiences, projects, tecnologies and commits
+
+### Resume
+
+- Professional background
+- Skills and experiences
+- About me
+
+### Work
+
+- Showcase of selected projects
+- Links to live demos and repositories
+
+### Services
+
+- List of services I provide (web development, backend solutions, etc.)
+
+### Contact
+
+- Contact form with validation
+
+## Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── app/ # Next.js App Router pages
+├── components/ # Reusable components
+├── config/ # Config files
+├── contexts/ # Context providers
+├── data/ # App's reusable data
+├── hooks/ # custom hooks
+├── types/ # Typescript types and interfaces
+└── lib/ # Helper functions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[View Portfolio](https://www.jonathanolivos.lat/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation & Setup
 
-## Learn More
+```bash
+# Clone repo
 
-To learn more about Next.js, take a look at the following resources:
+git clone https://github.com/papitapapita/my-portfolio.git
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Enter project folder
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+cd my-portfolio
 
-## Deploy on Vercel
+# Install dependencies
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run development server
 
-## What I learned
+npm run dev
+```
 
-In this project I learned to use Shadcn and Next.js
+📜 License
 
-## To-Do
+This project is licensed under the MIT License.
