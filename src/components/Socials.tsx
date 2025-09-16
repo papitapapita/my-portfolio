@@ -36,6 +36,8 @@ export function Socials({
             href={socialMedia.path}
             key={index}
             className={iconStyles}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {socialMedia.icon}
           </Link>
