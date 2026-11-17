@@ -15,6 +15,7 @@ import Link from "next/link";
 import { Swiper as SwiperType } from "swiper/types";
 import Image from "next/image";
 import { WorkSliderBtns } from "@/components/WorkSliderBtns";
+import { withBasePath } from "@/lib/basePath";
 
 const projects = [
   {
@@ -142,7 +143,7 @@ export default function Work() {
                     <div className="absolute top-0 bottom-0 w-full h-full bg-black/10 z-10"></div>
                     <div className="relative w-full h-full">
                       <Image
-                        src={project.image}
+                        src={withBasePath(project.image)}
                         fill
                         className="object-cover"
                         alt="Project image"

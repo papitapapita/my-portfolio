@@ -145,21 +145,27 @@ export default function Resume() {
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {about.description}
                 </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
-                  {about.info.map((item, index) => (
-                    <li
-                      key={index}
-                      className="flex items-center justify-center flex-col md:flex-row xl:justify-start gap-4 "
-                    >
-                      <span className="text-white/60">
-                        {item.fieldName}
-                      </span>
-                      <span className="md:text-xl">
-                        {item.fieldValue}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <table className="w-full max-w-[620px] mx-auto xl:mx-0 border-collapse text-left">
+                  <caption className="sr-only">Personal information</caption>
+                  <tbody>
+                    {about.info.map((item, index) => (
+                      <tr
+                        key={index}
+                        className="border-b border-white/10 last:border-b-0"
+                      >
+                        <th
+                          scope="row"
+                          className="py-3 pr-6 font-normal text-white/60 capitalize whitespace-nowrap align-top"
+                        >
+                          {item.fieldName}
+                        </th>
+                        <td className="py-3 md:text-xl break-all">
+                          {item.fieldValue}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </TabsContent>
           </div>

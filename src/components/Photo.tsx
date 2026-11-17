@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { withBasePath } from "@/lib/basePath";
 
 export function Photo() {
   return (
@@ -31,8 +32,8 @@ export function Photo() {
         >
           <div className="absolute left-[15px] xl:left-[30px] h-[298px] w-[298px] xl:h-[498px] xl:w-[498px] ">
             <Image
-              src="/photo2.png"
-              alt="Profile Photo"
+              src={withBasePath("/photo2.png")}
+              alt="Jonathan Olivos profile photo"
               quality={100}
               fill
               priority

@@ -3,6 +3,7 @@ import { Socials } from "@/components/Socials";
 import { Button } from "@/components/ui/button";
 import { Stats } from "@/components/Stats";
 import { FiDownload } from "react-icons/fi";
+import { withBasePath } from "@/lib/basePath";
 
 export default function Home() {
   return (
@@ -19,13 +20,13 @@ export default function Home() {
               <span className="text-accent">Jonathan Olivos</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80 place-self-center xl:place-self-start">
-              I excel at crafting elegant digital experiences and I am
-              proficient in various software technologies.
+              I excel at crafting <strong>elegant digital experiences</strong>{" "}
+              and I am proficient in <em>various software technologies</em>.
             </p>
             <div className="flex gap-10 items-center flex-col xl:flex-row">
               <Button asChild variant="outline" size="lg">
                 <a
-                  href="/Jonathan_Olivos_CV.pdf"
+                  href={withBasePath("/Jonathan_Olivos_CV.pdf")}
                   download
                   rel="noreferrer"
                   target="_blank"

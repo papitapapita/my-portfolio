@@ -30,8 +30,18 @@ import {
 
 export const about = {
   title: "About me",
-  description:
-    "I’m a Colombian fullstack developer with a strong focus on backend technologies and modern web applications. My background in telecommunications and IT has given me a solid foundation in problem-solving, networking, and system management, which I now combine with software development to create scalable and efficient solutions. I’m passionate about continuous learning, always improving my skills, and open to collaborating on projects that bring value and innovation.",
+  description: (
+    <>
+      I’m a Colombian <strong>fullstack developer</strong> with a strong focus
+      on <strong>backend technologies</strong> and modern web applications. My
+      background in telecommunications and IT has given me a solid foundation in
+      problem-solving, networking, and system management, which I now combine
+      with software development to create <em>scalable and efficient</em>{" "}
+      solutions. I’m passionate about <em>continuous learning</em>, always
+      improving my skills, and open to collaborating on projects that bring value
+      and innovation.
+    </>
+  ),
   info: [
     { fieldName: "Name", fieldValue: "Jonathan Olivos" },
     { fieldName: "Phone", fieldValue: "(+57) 320 923 7075" },
@@ -49,8 +59,16 @@ export const about = {
 export const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My experience",
-  description:
-    "Over the years I have built a solid foundation in technology, starting with IT infrastructure and telecommunications, and evolving into fullstack software development. Today, I focus on backend and fullstack development, combining my background in networking with modern web technologies to create efficient and reliable applications.",
+  description: (
+    <>
+      Over the years I have built a solid foundation in technology, starting
+      with <em>IT infrastructure and telecommunications</em>, and evolving into
+      fullstack software development. Today, I focus on{" "}
+      <strong>backend and fullstack development</strong>, combining my
+      background in networking with modern web technologies to create efficient
+      and reliable applications.
+    </>
+  ),
   items: [
     {
       company: "Insetel",
