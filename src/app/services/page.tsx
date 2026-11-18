@@ -10,42 +10,36 @@ const services = [
     title: "Backend Development",
     description:
       "Design and build scalable, secure, and high-performance server-side applications using Node.js, TypeScript, and Express. I focus on clean architecture, APIs, and database management.",
-    href: "/services/backend",
   },
   {
     num: "02",
     title: "Frontend Development",
     description:
       "Create responsive and modern web interfaces with React, Next.js, and TailwindCSS. I ensure usability, performance, and a seamless user experience across devices.",
-    href: "/services/frontend",
   },
   {
     num: "03",
     title: "Database Design & Management",
     description:
       "Design, optimize, and manage relational and non-relational databases such as PostgreSQL and MongoDB. I implement efficient schemas, indexing, and secure data handling.",
-    href: "/services/database",
   },
   {
     num: "04",
     title: "API Development & Integration",
     description:
       "Build and document RESTful APIs for applications, integrate third-party services, and ensure reliability and scalability for business-critical operations.",
-    href: "/services/api",
   },
   {
     num: "05",
     title: "DevOps & Deployment",
     description:
       "Set up CI/CD pipelines, Docker containers, and cloud deployments (AWS, DigitalOcean, Vercel) to ensure smooth delivery, scalability, and uptime for your applications.",
-    href: "/services/devops",
   },
   {
     num: "06",
     title: "Custom Software Solutions",
     description:
       "Develop tailored web applications for business needs such as dashboards, inventory management, billing systems, or monitoring tools with a focus on efficiency and growth.",
-    href: "/services/custom",
   },
 ];
 
@@ -72,7 +66,8 @@ export default function Services() {
                     {service.num}
                   </div>
                   <Link
-                    href={service.href}
+                    href="/contact"
+                    aria-label={`Ask about ${service.title}`}
                     className="flex justify-center items-center w-[70px] h-[70px]  rounded-full bg-white group-hover:bg-accent transition-all duration-500 hover:-rotate-45"
                   >
                     <BsArrowDownRight className="text-primary text-3xl" />
