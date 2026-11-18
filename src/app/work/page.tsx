@@ -11,7 +11,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Link from "next/link";
 import { Swiper as SwiperType } from "swiper/types";
 import Image from "next/image";
 import { WorkSliderBtns } from "@/components/WorkSliderBtns";
@@ -20,50 +19,56 @@ import { withBasePath } from "@/lib/basePath";
 const projects = [
   {
     num: "01",
-    category: "frontend",
-    title: "project 1",
+    category: "SaaS · Fullstack",
+    title: "Mi Red Control",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, rem! Fuga nostrum accusamus dicta, placeat, quaerat debitis labore ea error ut dolore ad facilis maiores. Molestiae voluptas iusto ad et?",
+      "Network monitoring platform for internet service providers. It checks routers, antennas and links every minute, sends Telegram alerts in Spanish, and shows device status, latency history and a network map.",
     stack: [
-      { name: "HTML 5" },
-      { name: "Css 3" },
-      { name: "Javascript" },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Node.js" },
+      { name: "PostgreSQL" },
     ],
-    image: "/assets/work/thumb1.png",
-    live: "",
+    image: "/assets/work/mi-red-control.png",
+    live: "https://miredcontrol.com",
+    // Private repository: only the public product site is linked
     github: "",
   },
   {
     num: "02",
-    category: "frontend",
-    title: "project 1",
+    category: "Frontend",
+    title: "Road Trip Planner",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, rem! Fuga nostrum accusamus dicta, placeat, quaerat debitis labore ea error ut dolore ad facilis maiores. Molestiae voluptas iusto ad et?",
+      "Motorcycle trip planner with an interactive map: multi-day routes, travel times, fuel, lunch and hotel stops, tolls and trip costs.",
     stack: [
       { name: "HTML 5" },
-      { name: "Css 3" },
-      { name: "Javascript" },
+      { name: "CSS 3" },
+      { name: "JavaScript" },
+      { name: "Leaflet" },
     ],
-    image: "/assets/work/thumb2.png",
+    image: "/assets/work/road-trip-planner.png",
     live: "",
-    github: "",
+    github: "https://github.com/papitapapita/road-trip-planner",
   },
   {
     num: "03",
-    category: "frontend",
-    title: "project 1",
+    category: "Frontend",
+    title: "To-Do App",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, rem! Fuga nostrum accusamus dicta, placeat, quaerat debitis labore ea error ut dolore ad facilis maiores. Molestiae voluptas iusto ad et?",
+      "Task manager to add, complete, search and delete tasks, with a progress counter and data saved in the browser's local storage.",
     stack: [
-      { name: "HTML 5" },
-      { name: "Css 3" },
-      { name: "Javascript" },
+      { name: "React" },
+      { name: "TypeScript" },
+      { name: "Vite" },
     ],
-    image: "/assets/work/thumb3.png",
+    image: "/assets/work/to-do-react.png",
     live: "",
-    github: "",
+    github: "https://github.com/papitapapita/to-do-react",
   },
 ];
+
+const linkStyles =
+  "w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group";
 
 export default function Work() {
   const [project, setProject] = useState(projects[0]);
@@ -89,11 +94,14 @@ export default function Work() {
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
                 {project.num}
               </div>
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project
-              </h2>
+              <div className="flex flex-col gap-2">
+                <h2 className="text-[42px] font-bold leading-none text-white">
+                  {project.title}
+                </h2>
+                <p className="text-accent">{project.category}</p>
+              </div>
               <p className="text-white/60">{project.description}</p>
-              <ul className="flex gap-4">
+              <ul className="flex flex-wrap gap-x-4 gap-y-1">
                 {project.stack.map((item, index) => (
                   <li key={index} className="text-xl text-accent">
                     {item.name}
@@ -103,30 +111,46 @@ export default function Work() {
               </ul>
               <div className="border border-white/20"></div>
               <div className="flex items-center gap-4">
-                <Link href={project.live}>
+                {project.live && (
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group ">
-                        <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                      <TooltipTrigger asChild>
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} live site`}
+                          className={linkStyles}
+                        >
+                          <BsArrowUpRight className="text-white text-3xl group-hover:text-accent" />
+                        </a>
                       </TooltipTrigger>
                       <TooltipContent className="rounded">
                         <p>Live project</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                </Link>
-                <Link href={project.github}>
+                )}
+                {project.github && (
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                      <TooltipTrigger asChild>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${project.title} GitHub repository`}
+                          className={linkStyles}
+                        >
+                          <BsGithub className="text-white text-3xl group-hover:text-accent" />
+                        </a>
                       </TooltipTrigger>
                       <TooltipContent className="rounded">
                         <p>GitHub repository</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                </Link>
+                )}
               </div>
             </div>
           </div>
@@ -145,8 +169,8 @@ export default function Work() {
                       <Image
                         src={withBasePath(project.image)}
                         fill
-                        className="object-cover"
-                        alt="Project image"
+                        className="object-cover object-left-top"
+                        alt={`${project.title} screenshot`}
                       />
                     </div>
                   </div>

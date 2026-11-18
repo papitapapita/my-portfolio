@@ -18,7 +18,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 
 const info = [
@@ -41,35 +41,22 @@ const info = [
 
 export default function Contact() {
   const [selectedService, setSelectedService] = useState("");
-  const [submitStatus, setSubmitStatus] = useState<
-    "success" | "error" | null
-  >(null);
-  const [state, handleSubmit] = useForm("mblaeplr");
+  const [state, handleSubmit, resetSubmission] = useForm("mblaeplr");
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitStatus(null);
-
-    const formData = new FormData(e.currentTarget);
-
-    // Add the selected service to form data
-    if (selectedService) {
-      formData.append("service", selectedService);
+  // `state` only reflects the result after the next render, so the form
+  // reacts to it here instead of reading it right after submitting.
+  useEffect(() => {
+    if (state.succeeded) {
+      formRef.current?.reset();
+      setSelectedService("");
     }
+  }, [state.succeeded]);
 
-    try {
-      await handleSubmit(e);
-      console.log(state.succeeded);
-      if (state.succeeded) {
-        setSubmitStatus("success");
-        // Reset form
-        (e.target as HTMLFormElement).reset();
-        setSelectedService("");
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch {
-      setSubmitStatus("error");
+  // Hide the previous result as soon as the visitor starts a new message
+  const clearResult = () => {
+    if (state.succeeded || state.errors) {
+      resetSubmission();
     }
   };
 
@@ -86,7 +73,9 @@ export default function Contact() {
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:h-[54%] order-2 xl:order-none">
             <form
-              onSubmit={onSubmit}
+              ref={formRef}
+              onSubmit={handleSubmit}
+              onInput={clearResult}
               className="flex flex-col gap-6 p-10 bg-[#121c4d] rounded"
             >
               <h3 className="text-4xl text-accent">
@@ -99,13 +88,13 @@ export default function Contact() {
                 you soon.
               </p>
 
-              {submitStatus === "success" && (
+              {state.succeeded && (
                 <div className="p-4 bg-green-600/20 border border-green-600 rounded text-green-400">
                   Thank you! Your message has been sent successfully.
                 </div>
               )}
 
-              {submitStatus === "error" && (
+              {state.errors && (
                 <div className="p-4 bg-red-600/20 border border-red-600 rounded text-red-400">
                   Sorry, there was an error sending your message.
                   Please try again.
@@ -162,8 +151,12 @@ export default function Contact() {
               </div>
 
               <Select
+                name="service"
                 value={selectedService}
-                onValueChange={setSelectedService}
+                onValueChange={(value) => {
+                  setSelectedService(value);
+                  clearResult();
+                }}
               >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
